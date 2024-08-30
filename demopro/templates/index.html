@@ -7,12 +7,17 @@
 </head>
 <body>
    <h1>index</h1> 
-   <form action="" method="post">
+   <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
     <input type="text" name="name" placeholder="Enter Your Name">
     <input type="text" name="age" placeholder="Enter Your Age">
     <input type="text" name="mark" placeholder="Enter Your Marks">
     <input type="submit" value="submit">
    </form>
+   {% for i in obj %}
+   <p>{{i.name}} {{i.age}} {{i.mark}} <a href="{% url 'delete' i.pk %}">delete</a></p>
+   <p>{{i.name}} {{i.age}} {{i.mark}} <a href="{% url 'edit' i.pk %}">edit</a></p>
+
+   {% endfor %}
 </body>
 </html>
